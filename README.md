@@ -1,16 +1,45 @@
-# React + Vite
+# 3D Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React](https://img.shields.io/badge/React-19-61DAFB)
+![Three.js](https://img.shields.io/badge/Three.js-r183-000000)
+![Vite](https://img.shields.io/badge/Vite-8-646CFF)
 
-Currently, two official plugins are available:
+Сайт-витрина 3D-моделей команды BuffTeam. Модели в стиле Minecraft загружаются прямо в браузер, их можно крутить мышью и листать по категориям.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> **English:** a showcase website for 3D models built with React, React Three Fiber and Three.js. Blockbench-style OBJ models with pixel textures are rendered in real time with orbit controls, grouped into tabbed galleries.
 
-## React Compiler
+## Возможности
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Интерактивный просмотр 3D-моделей: вращение и масштаб мышью (`OrbitControls`).
+- Загрузка моделей в формате OBJ с текстурами, пиксельная фильтрация (`NearestFilter`) для чёткого Minecraft-стиля.
+- Галереи по вкладкам с перелистыванием моделей.
+- Запасная анимированная модель, пока основная загружается.
+- Разделы «О команде», отзывы и контакты.
 
-## Expanding the ESLint configuration
+## Стек
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [React 19](https://react.dev/)
+- [React Three Fiber](https://r3f.docs.pmnd.rs/) и [drei](https://github.com/pmndrs/drei)
+- [Three.js](https://threejs.org/) (`OBJLoader`, `TextureLoader`)
+- [Vite](https://vite.dev/), ESLint
+
+## Запуск
+
+Нужен Node.js 20+.
+
+```bash
+npm install
+npm run dev       # dev-сервер с горячей перезагрузкой
+npm run build     # production-сборка в dist/
+npm run preview   # посмотреть собранную версию
+```
+
+## Структура
+
+```
+public/models/   модели (.obj, .mtl, .png) по папкам
+public/images/   иконки интерфейса
+src/App.jsx      компоненты: просмотрщик модели, галерея, разделы страницы
+```
+
+Чтобы добавить модель, положите `.obj` и текстуру в `public/models/<имя>/` и добавьте запись в список моделей в `src/App.jsx`.
